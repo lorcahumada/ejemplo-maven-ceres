@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh "echo 'Calling sonar Service in another docker container!'"
                 // Run Maven on a Unix agent to execute Sonar.
-                sh './mvnw clean verify sonar:sonar -Dsonar.host.url=http://sonarqube:9000'
+                sh './mvnw clean verify sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=sqp_a0e1ce65451559fd812af13642914c2b9edadc60'
             }
         }
     }
