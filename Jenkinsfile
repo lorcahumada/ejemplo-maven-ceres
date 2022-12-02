@@ -94,18 +94,24 @@ pipeline {
           stage("Paso 8: Testear Artefacto - Dormir(Esperar 20sg) "){
             steps {
                 script{
-                    sh "sleep 20 && newman run /home/ejemplo-maven.postman_collection.json"
+                    sh "sleep 20 && newman run ejemplo-maven.postman_collection.json"
                 }
             }
         }
-        stage("Paso 9:Detener Atefacto jar en Jenkins server"){
-            steps {
-                sh '''
+    }
+    post {
+        always {
+            sh '''
                     echo 'Process Java .jar: ' $(pidof java | awk '{print $1}')  
                     sleep 20
                     kill -9 $(pidof java | awk '{print $1}')
                 '''
-            }
+        }
+        success {
+            sh "echo 'fase success'"
+        }
+        failure {
+            sh "echo 'fase failure'"
         }
     }
 }
