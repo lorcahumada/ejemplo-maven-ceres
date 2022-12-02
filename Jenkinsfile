@@ -19,7 +19,11 @@ pipeline {
                 }
             }
         }
-
+        /*
+        
+        ESTOS PASOS SE COMENTAN DEBIDO A QUE MI MÁQUINA NO SOPORTA TENER SONARQUBE, JENKINS Y NEXUS.
+        
+        */
         // stage("Paso 2: Sonar - Análisis Estático"){
         //     steps {
         //         script{
